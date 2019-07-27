@@ -162,6 +162,11 @@ func filterEvent(data map[string]interface{}) bool {
 			return true
 		}
 	}
+	if value, ok := data["_SYSTEMD_USER_UNIT"].(string); ok {
+		if ignoreUnits[value] {
+			return true
+		}
+	}
 	return false
 }
 
